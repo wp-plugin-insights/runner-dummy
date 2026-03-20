@@ -41,9 +41,9 @@ class Runner
     {
         try {
             $payload = $this->jobProcessor->process($message->getBody());
-            $job = new Job($payload['plugin'], $payload['src']);
+            $job = new Job($payload['plugin'], $payload['version'], $payload['source'], $payload['src']);
 
-            fwrite(STDERR, sprintf("[runner] report generated" . " for plugin '%s' from src '%s'\n", $job->plugin, $job->src));
+            fwrite(STDERR, sprintf("[runner] report generated" . " for plugin '%s' with version '%s'\n", $job->plugin, $job->version));
 
             $this->reportPublisher->publish(
                 $job,

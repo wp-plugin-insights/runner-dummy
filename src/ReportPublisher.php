@@ -25,6 +25,8 @@ class ReportPublisher
         $payload = [
             'runner' => $this->config->runnerName,
             'plugin' => $job->plugin,
+            'version' => $job->version,
+            'source' => $job->source,
             'src' => $job->src,
             'report' => $report,
             'received_at' => $receivedAt,
